@@ -2,8 +2,10 @@
 This is the Docker version of my Twitter Bot: https://twitter.com/TLoveBotti
 
 ## Installation
-Clone repository:
+Clone the repository
 ```git clone https://github.com/TheHADILP/docker_retweet_bot.git```
+
+and run the [docker_build_and_run.sh](https://github.com/TheHADILP/docker_retweet_bot/blob/master/docker_build_and_run.sh) script for easy and hassle-free setup or find the commands here:
 
 ```
 # Build the Docker Image
@@ -23,10 +25,14 @@ docker run -d \
     twitter_bot
 ```
 
-## Twitter creds
-Now you can set up the API access for your Twitter account on https://developer.twitter.com/en/apps
+## Persistent Data Directory
 
-Enter your API keys in the twitter-creds file:  
+The ```twitter_bot``` directory gets mounted to the Docker Container and contains all the persistent files explained below:
+
+### twitter-creds
+You can set up the API access for your Twitter account on https://developer.twitter.com/en/apps
+
+Enter your API credentials in the twitter-creds file:  
 Put each item on a separate line and remove all quotes.
 ```
 "Consumer Key"
@@ -35,8 +41,19 @@ Put each item on a separate line and remove all quotes.
 "Access Token Secret"
 ```
 Run the following command to prevent your API credentials being accidentally pushed to git:  
-```git update-index --skip-worktree twitter-creds```
+```git update-index --skip-worktree twitter_bot/twitter-creds```
 
-## Blacklist
-All retweeted Tweet-IDs are saved in the retweet_blacklist file.
+### retweet-blacklist
+All retweeted Tweet-IDs are saved in this file.  
 This ensures that no duplicate posts are tweeted.
+
+### users
+A list of Twitter user that you want to iterate through.  
+The file is prepopulated with some names, modify as you like.  
+Changes take immediate effect, so no need to restart anything.
+
+### buzzwords
+A list of words the filtered Tweets are checked against.  
+At least one of those words needs to be included in a Tweet's text in order to get retweeted.  
+The file is prepopulated with some example words, modify as you like.  
+Changes take immediate effect, so no need to restart anything. (Surprise, huh)
