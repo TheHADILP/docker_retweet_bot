@@ -27,12 +27,12 @@ docker run -d \
 
 ## Persistent Data Directory
 
-The ```twitter_bot``` directory gets mounted to the Docker Container and contains all the persistent files explained below:
+The ```twitter_bot_data``` directory gets mounted to the Docker Container and contains all the persistent files explained below:
 
 ### twitter-creds
 You can set up the API access for your Twitter account on https://developer.twitter.com/en/apps
 
-Enter your API credentials in the twitter-creds file:  
+Enter your API credentials in this file:  
 Put each item on a separate line and remove all quotes.
 ```
 "Consumer Key"
@@ -41,19 +41,19 @@ Put each item on a separate line and remove all quotes.
 "Access Token Secret"
 ```
 Run the following command to prevent your API credentials being accidentally pushed to git:  
-```git update-index --skip-worktree twitter_bot/twitter-creds```
+```git update-index --skip-worktree twitter_bot_data/twitter-creds```
 
 ### retweet-blacklist
 All retweeted Tweet-IDs are saved in this file.  
 This ensures that no duplicate posts are tweeted.
 
 ### users
-A list of Twitter user that you want to iterate through.  
+A list of Twitter user that you want to iterate through (one user per line).  
 The file is prepopulated with some names, modify as you like.  
 Changes take immediate effect, so no need to restart anything.
 
 ### buzzwords
-A list of words the filtered Tweets are checked against.  
+A list of words that the filtered Tweets are checked against (one word per line).  
 At least one of those words needs to be included in a Tweet's text in order to get retweeted.  
 The file is prepopulated with some example words, modify as you like.  
 Changes take immediate effect, so no need to restart anything. (Surprise, huh)
