@@ -12,6 +12,6 @@ docker container rm twitter_bot
 # Docker Run Command to start a new container and mount the directory
 docker run -d \
     --name twitter_bot \
-    -v "/home/ubuntu/twitter_bot/:/twitter_bot/" \
+    -v "$(pwd)/twitter_bot_data/:/twitter_bot/" \
     --restart=unless-stopped \
     twitter_bot
