@@ -41,7 +41,7 @@ while True:
 								file.write('\n' + nId)
 
 							api_setup.api.retweet(id = nId)
-							time.sleep(5400)
+							time.sleep(900)
 						else:
 							print '     DUPLICATE FOUND'
 							time.sleep(2)
@@ -52,7 +52,7 @@ while True:
 						break
 			else:
 				print 'EMPTY, RESTARTING SCRIPT...'
-				time.sleep(120)
+				time.sleep(5)
 				break
 		except TwythonError as e:
 			print e
