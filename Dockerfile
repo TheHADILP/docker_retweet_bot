@@ -8,5 +8,3 @@ ADD retweet.py /
 RUN pip install twython
 
 CMD [ "python", "./retweet.py" ]
-
-#ENTRYPOINT [ "python", "./retweet.py" ]
