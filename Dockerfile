@@ -1,10 +1,10 @@
-FROM python:2-alpine
+FROM python:alpine
 
 RUN mkdir /twitter_bot
 
-ADD api_setup.py /
-ADD retweet.py /
+COPY api_setup.py /
+COPY retweet.py /
 
 RUN pip install twython
 
-CMD [ "python", "./retweet.py" ]
+CMD ["python","-u","retweet.py"]
