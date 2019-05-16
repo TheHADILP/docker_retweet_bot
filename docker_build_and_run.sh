@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Build the Docker Image
-docker build --rm -t twitter_bot .
+docker build --rm --pull -t twitter_bot .
 
 # Stop the perhaps already running Docker Container
 docker stop twitter_bot
