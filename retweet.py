@@ -24,36 +24,36 @@ while True:
                 except TwythonError as e:
                     print (e)
 
-                    for tweet in timeline:
-                        nId = tweet['id_str']
+                for tweet in timeline:
+                    nId = tweet['id_str']
 
-                        with open('/twitter_bot/buzzwords') as f:
-                            buzzwords = f.read().splitlines()
+                    with open('/twitter_bot/buzzwords') as f:
+                        buzzwords = f.read().splitlines()
 
-                            if any(n in tweet['text'] for n in buzzwords):
+                    if any(n in tweet['text'] for n in buzzwords):
 
-                                if nId not in open('/twitter_bot/retweet-blacklist').read():
-                                    print ('nId: ' + nId)
-                                    print (tweet['text'].encode('utf-8'))
-                                    print ('     TWEETED!!! (NEW ON MY PROFILE)                  #####')
-                                    print ('')
-                                    with open('/twitter_bot/retweet-blacklist', 'a') as file:
-                                        file.write('\n' + nId)
+                        if nId not in open('/twitter_bot/retweet-blacklist').read():
+                            print ('nId: ' + nId)
+                            print (tweet['text'].encode('utf-8'))
+                            print ('     TWEETED!!! (NEW ON MY PROFILE)                  #####')
+                            print ('')
+                            with open('/twitter_bot/retweet-blacklist', 'a') as file:
+                                file.write('\n' + nId)
 
-                                        api_setup.api.retweet(id = nId)
-                                        time.sleep(900)
-                                else:
-                                    print ('     DUPLICATE FOUND')
-                                    time.sleep(2)
-                                    break
-                            else:
-                                 print ('     NOTHING FOUND YET')
-                                 time.sleep(2)
-                                 break
+                            api_setup.api.retweet(id = nId)
+                            time.sleep(900)
+                        else:
+                            print ('     DUPLICATE FOUND')
+                            time.sleep(2)
+                            break
+                    else:
+                         print ('     NOTHING FOUND YET')
+                         time.sleep(2)
+                         break
             else:
                 print ('EMPTY, RESTARTING SCRIPT...')
                 time.sleep(5)
-            break
+                break
         except TwythonError as e:
             print (e)
 
