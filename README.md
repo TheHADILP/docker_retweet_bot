@@ -9,7 +9,7 @@ and run the [docker_build_and_run.sh](https://github.com/TheHADILP/docker_retwee
 
 ```
 # Build the Docker Image
-docker build --rm --pull -t twitter_bot .
+docker build --no-cache --rm --pull -t twitter_bot .
 
 # Stop the perhaps already running Docker Container
 docker stop twitter_bot
