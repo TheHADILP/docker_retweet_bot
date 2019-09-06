@@ -18,7 +18,7 @@ while True:
             if len(users) > 0:
                 selected = users[random.randint(0, len(users))-1]
                 users.remove(selected)
-                print (selected)
+                print (str(selected) + ':')
 
                 try:
                     timeline = api_setup.api.get_user_timeline(
@@ -38,17 +38,18 @@ while True:
                     if any(n in tweet['text'] for n in buzzwords):
 
                         if nId not in open('/twitter_bot/retweet-blacklist').read():
-                            print ('nId: ' + nId)
-                            print (tweet['text'].encode('utf-8'))
-                            print ('     TWEETED!!! (NEW ON MY PROFILE)                  #####')
+                            print ('    ID: ' + nId)
                             print ('')
-                            with open('/twitter_bot/retweet-blacklist', 'a') as file:
-                                file.write('\n' + nId)
+                            print (tweet['text'])
+                            print ('')
+                            print ('    Tweeted!!!')
+                            with open('/twitter_bot/retweet-blacklist', 'a') as blacklist:
+                                blacklist.write('\n' + nId)
 
                             api_setup.api.retweet(id=nId)
                             time.sleep(900)
                         else:
-                            print ('     DUPLICATE FOUND')
+                            print ('    Duplicate tweet found')
                             time.sleep(2)
                             break
                     else:
@@ -56,7 +57,7 @@ while True:
                         time.sleep(2)
                         break
             else:
-                print ('EMPTY, RESTARTING SCRIPT...')
+                print ('User list empty, starting over...')
                 time.sleep(5)
                 break
         except TwythonError as e:
