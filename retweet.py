@@ -18,7 +18,7 @@ while True:
             if users:
                 selected = users[random.randint(0, len(users))-1]
                 users.remove(selected)
-                print (str(selected) + ':')
+                print(str(selected) + ':')
 
                 try:
                     timeline = api_setup.api.get_user_timeline(
@@ -27,7 +27,7 @@ while True:
                         exclude_replies='true',
                         include_rts='true')
                 except TwythonError as e:
-                    print (e)
+                    print(e)
 
                 for tweet in timeline:
                     nId = tweet['id_str']
@@ -38,28 +38,27 @@ while True:
                     if any(n in tweet['text'] for n in buzzwords):
 
                         if nId not in open('/twitter_bot/retweet-blacklist').read():
-                            print ('    ID: ' + nId)
-                            print ('')
-                            print (tweet['text'])
-                            print ('')
-                            print ('    Tweeted!!!')
+                            print('    ID: ' + nId)
+                            print('')
+                            print(tweet['text'])
+                            print('')
+                            print('    Tweeted!!!')
                             with open('/twitter_bot/retweet-blacklist', 'a') as blacklist:
                                 blacklist.write('\n' + nId)
 
                             api_setup.api.retweet(id=nId)
                             time.sleep(900)
                         else:
-                            print ('    Duplicate tweet found')
+                            print('    Duplicate tweet found')
                             time.sleep(2)
                             break
                     else:
-                        print ('    No matching tweet found')
+                        print('    No matching tweet found')
                         time.sleep(2)
                         break
             else:
-                print ('User list empty, starting over...')
+                print('User list empty, starting over...')
                 time.sleep(5)
                 break
         except TwythonError as e:
-            print (e)
-
+            print(e)
