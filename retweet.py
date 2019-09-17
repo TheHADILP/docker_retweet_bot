@@ -15,7 +15,7 @@ while True:
 
     while True:
         try:
-            if len(users) > 0:
+            if users:
                 selected = users[random.randint(0, len(users))-1]
                 users.remove(selected)
                 print (str(selected) + ':')
