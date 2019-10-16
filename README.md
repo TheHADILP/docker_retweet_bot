@@ -5,7 +5,7 @@ This is the Docker version of my Twitter Bot: https://twitter.com/TLoveBotti
 Clone the repository
 ```git clone https://github.com/shaderecker/docker_retweet_bot.git```
 
-and run the [docker_build_and_run.sh](https://github.com/shaderecker/docker_retweet_bot/blob/master/docker_build_and_run.sh) script for easy and hassle-free setup or find the commands here:
+and run the [docker_build_and_run.sh](docker_build_and_run.sh) script for easy and hassle-free setup or find the commands here:
 
 ```
 # Build the Docker Image
