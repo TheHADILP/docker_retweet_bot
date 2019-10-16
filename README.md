@@ -45,7 +45,7 @@ Run the following command to prevent your API credentials being accidentally pus
 
 ### retweet-blacklist
 All retweeted Tweet-IDs are saved in this file.  
-This ensures that no duplicate posts are tweeted.
+This ensures that no duplicate posts are tweeted (so the Twitter API doesn't complain).
 
 ### users
 A list of Twitter user that you want to iterate through (one user per line).  
