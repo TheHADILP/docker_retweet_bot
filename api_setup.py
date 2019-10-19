@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """This script reads the API credentials from a file
 and initializes Twython with them"""
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # coding: utf8
 """This script checks tweets of defined users for defined hashtags in random order.
 When a suitable tweet is found, which wasn't previously retweeted, it gets retweeted"""

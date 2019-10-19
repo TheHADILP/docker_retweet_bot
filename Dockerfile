@@ -5,6 +5,6 @@ RUN mkdir /twitter_bot
 COPY api_setup.py /
 COPY retweet.py /
 
-RUN pip install --no-cache-dir twython
+RUN pip3 install --no-cache-dir twython
 
-CMD ["python","-u","retweet.py"]
+CMD ["python3","-u","retweet.py"]
