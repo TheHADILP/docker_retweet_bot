@@ -20,14 +20,14 @@ docker container rm twitter_bot
 # Docker Run Command to start a new container and mount the directory
 docker run -d \
     --name twitter_bot \
-    -v "$(pwd)/twitter_bot_data/:/twitter_bot/" \
+    -v "$(pwd)/data/:/twitter_bot/data/" \
     --restart=unless-stopped \
     twitter_bot
 ```
 
 ## Persistent Data Directory
 
-The ```twitter_bot_data``` directory gets mounted to the Docker Container and contains all the persistent files explained below:
+The ```data``` directory gets mounted to the Docker Container and contains all the persistent files explained below:
 
 ### twitter-creds
 You can set up the API access for your Twitter account on https://developer.twitter.com/en/apps
@@ -41,7 +41,7 @@ Put each item on a separate line and remove all quotes.
 "Access Token Secret"
 ```
 Run the following command to prevent your API credentials being accidentally pushed to git:  
-```git update-index --skip-worktree twitter_bot_data/twitter-creds```
+```git update-index --skip-worktree data/twitter-creds```
 
 ### retweet-blacklist
 All retweeted Tweet-IDs are saved in this file.  
