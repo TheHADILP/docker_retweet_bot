@@ -7,7 +7,7 @@ COPY retweet.py /
 
 RUN pip3 install --no-cache-dir twython
 
-RUN addgroup --system twitterbot && adduser --system --shell /bin/false --no-create-home --ingroup twitterbot twitterbot
+RUN addgroup -g 1000 --system twitterbot && adduser --system --shell /bin/false --no-create-home --ingroup twitterbot twitterbot
 
 USER twitterbot
 
