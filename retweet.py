@@ -10,7 +10,7 @@ from twython import TwythonError
 import api_setup
 
 while True:
-    with open('/twitter_bot/users') as user_list:
+    with open('data/users') as user_list:
         users = user_list.read().splitlines()
 
     while True:
@@ -32,18 +32,18 @@ while True:
                 for tweet in timeline:
                     nId = tweet['id_str']
 
-                    with open('/twitter_bot/buzzwords') as buzzword_list:
+                    with open('data/buzzwords') as buzzword_list:
                         buzzwords = buzzword_list.read().splitlines()
 
                     if any(n in tweet['text'] for n in buzzwords):
 
-                        if nId not in open('/twitter_bot/retweet-blacklist').read():
+                        if nId not in open('data/retweet-blacklist').read():
                             print('    ID: ' + nId)
                             print('')
                             print(tweet['text'])
                             print('')
                             print('    Tweeted!!!')
-                            with open('/twitter_bot/retweet-blacklist', 'a') as blacklist:
+                            with open('data/retweet-blacklist', 'a') as blacklist:
                                 blacklist.write('\n' + nId)
 
                             api_setup.api.retweet(id=nId)

@@ -4,7 +4,7 @@ and initializes Twython with them"""
 
 from twython import Twython
 
-with open('/twitter_bot/twitter-creds') as api_creds:
+with open('data/twitter-creds') as api_creds:
     lines = api_creds.read().splitlines()
 
 api = Twython(*lines)
