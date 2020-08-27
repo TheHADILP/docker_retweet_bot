@@ -1,5 +1,5 @@
 # Retweet-Bot for Twitter with Docker and Twython
-This is the Docker version of my Twitter Bot: https://twitter.com/TLoveBotti
+This is the Docker version of my Twitter Bot
 
 ## Installation
 Clone the repository
